@@ -5,14 +5,33 @@ experience and become vulnerable because of unpredictable behaviors of the users
 most methods of authentication make it difficult for an administrator to revoke access to the
 network, or even see who and what has access to begin with.
 
-\subsection{
+\subsection{Authentication Types}
+There are several authentication techniques supported for communication over WiFi. They include
+the following types of authentication, roughly in ascending order of security: \cite{WifiAuthenticationTypes}
+\begin{authTypes}
+  \item{Open Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching the
+  access point's WEP keys.
+  \item{Shared Key Authentication:} Similarly, devices have a shared key. The access point sends an
+  unencrypted challenge text to the device, who responds with the same text encrypted with the shared key.
+  \item{MAC Address Authentication:} An access point can be configured with a white-list of allowed
+  device MAC addresses. Any device with a MAC address on that list can communicate over the network.
+  \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of
+  interactions between the device and a RADIUS server, with the access point relaying. Once authenticated,
+  the device gets a unique WEP key for continued authenticated access.
+  \item{WPA Authentication:} Wi-Fi Protected Access has devices authenticate much like EAP, with
+  some differences in key management.
+\end{authTypes}
+
+\subsection{Shared Keys}
 WiFi authentication typically works based on the sharing of an SSID and a secret or password.
 This works, and allows for secure communication between a device who has the SSID/secret and
-the wireless router or access point. The challenge with this "shared secret" technique is it
+the wireless router or access point. The challenge with this shared secret technique is it
 can be tedious to share with users. Additionally, to improve the security of a shared secret,
 it should be (1) hard to guess and therefore a mixture of alphanumeric and special characters,
-(2) hard to brute force and therefore long enough to challenge current and near-future computers,
+(2) hard to brute force and therefore long enough to challenge current and (near-) future computers,
 and (3) is changed regularly reducing the window of opportunity intruders have on the network.
+
+
 
 \subsection{Some Subsection}
 [subsection here]
