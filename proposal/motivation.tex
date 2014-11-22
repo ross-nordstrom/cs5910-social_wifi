@@ -57,7 +57,18 @@ the following types of authentication, roughly in ascending order of security an
 
   \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of
   interactions between the device and a RADIUS authentication server, with the access point
-  relaying. Once authenticated, the device gets a unique key for continued authenticated access.
+  relaying. Once authenticated, the device gets a unique key for continued authenticated access. It
+  comes in a variety of types, with the most prominent being the PEAP (Protected EAP), and
+  \textbf{insecure} LEAP (Lightweight EAP).
+
+  \item{RF Shielding:} Rather than worry about intruders gaining unauthorized access to the network,
+  it can be simpler to coat the surrounding structure (e.g. room, office space, or building) with
+  a material, film, or paint that prevents wireless signals from entering or escaping.
+
+  \item{Token Identifiers:} Smart cards and USB/Software Tokens can be used for one of the most
+  secure authentication mechisms. The token provider (card, USB, or software) combines a stored
+  token with a user-entered PIN in a time-sensitive algorithm to frequently produce new encryption
+  codes. Authentication with the server requires the device to be synchronized with its clock.
 \end{description}
 
 \subsection{Shared Keys}
@@ -68,8 +79,3 @@ can be tedious to share with users. Additionally, to improve the security of a s
 it should be (1) hard to guess and therefore a mixture of alphanumeric and special characters,
 (2) hard to brute force and therefore long enough to challenge current and (near-) future computers,
 and (3) is changed regularly reducing the window of opportunity intruders have on the network.
-
-
-
-\subsection{Some Subsection}
-[subsection here]
