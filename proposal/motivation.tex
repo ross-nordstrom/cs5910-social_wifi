@@ -52,9 +52,12 @@ the following types of authentication, roughly in ascending order of security an
   It uses EAP for authentication. Also called "WPA-802.1X mode" or "WPA".
   \end{itemize}
 
+  \item{WPA2:} Replaces WPA with the major contribution being CCMP, a stronger AES-based encryption.
+  CCMP stands for "Counter Cipher Mode with block chaining message authentication code Protocol".
+
   \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of
-  interactions between the device and a RADIUS server, with the access point relaying. Once
-  authenticated, the device gets a unique WEP key for continued authenticated access.
+  interactions between the device and a RADIUS authentication server, with the access point
+  relaying. Once authenticated, the device gets a unique key for continued authenticated access.
 \end{description}
 
 \subsection{Shared Keys}
