@@ -9,8 +9,9 @@ network, or even see who and what has access to begin with.
 There are several authentication techniques supported for communication over WiFi. They include
 the following types of authentication, roughly in ascending order of security: \cite{WifiAuthenticationTypes}
 \begin{description}
-  \item{Open Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching the access point's WEP keys.
-  \item{Shared Key Authentication:} Similarly, devices have a shared key. The access point sends an unencrypted challenge text to the device, who responds with the same text encrypted with the shared key.
+  \item{SSID Hiding:} Wireless networks can be "hidden" by not broadcasting the SSID; however, it's extremely easy to detect hidden SSIDs. This is a "security through obscurity" technique, which does a poor job of providing protection.
+  \item{Open WEP Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching the access point's WEP keys. These keys must be pre-shared, and any authenticated device can immediately authenticate with the access point.
+  \item{Shared Key WEP Authentication:} Similarly, devices have a shared key, but now must authenticate in through a four-step handashake. The device sends a request to the access point, who responds with an unencrypted challenge text, which the device encrypts using the shared key and returns to the AP. Finally, the access point decrypts the device's response and returns it. This technique is actually less secure than Open WEP Authentication, but intruders can see both the clear and encrypted text, and therefore derive the shared key. Once derived, they could use the sharek key for uninhibited access to the wireless network.
   \item{MAC Address Authentication:} An access point can be configured with a white-list of allowed device MAC addresses. Any device with a MAC address on that list can communicate over the network.
   \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of interactions between the device and a RADIUS server, with the access point relaying. Once authenticated, the device gets a unique WEP key for continued authenticated access.
   \item{WPA Authentication:} Wi-Fi Protected Access has devices authenticate much like EAP, with some differences in key management.
