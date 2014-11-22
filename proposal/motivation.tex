@@ -7,14 +7,54 @@ network, or even see who and what has access to begin with.
 
 \subsection{Authentication Types}
 There are several authentication techniques supported for communication over WiFi. They include
-the following types of authentication, roughly in ascending order of security: \cite{WifiAuthenticationTypes}
+the following types of authentication, roughly in ascending order of security and grouped by security:
+ \cite{WifiAuthenticationTypes} \cite{wiki:WirelessSecurity}
+
+\subsubsection{Insecure Types}
 \begin{description}
-  \item{SSID Hiding:} Wireless networks can be "hidden" by not broadcasting the SSID; however, it's extremely easy to detect hidden SSIDs. This is a "security through obscurity" technique, which does a poor job of providing protection.
-  \item{Open WEP Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching the access point's WEP keys. These keys must be pre-shared, and any authenticated device can immediately authenticate with the access point.
-  \item{Shared Key WEP Authentication:} Similarly, devices have a shared key, but now must authenticate in through a four-step handashake. The device sends a request to the access point, who responds with an unencrypted challenge text, which the device encrypts using the shared key and returns to the AP. Finally, the access point decrypts the device's response and returns it. This technique is actually less secure than Open WEP Authentication, but intruders can see both the clear and encrypted text, and therefore derive the shared key. Once derived, they could use the sharek key for uninhibited access to the wireless network.
-  \item{MAC Address Authentication:} An access point can be configured with a white-list of allowed device MAC addresses. Any device with a MAC address on that list can communicate over the network.
-  \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of interactions between the device and a RADIUS server, with the access point relaying. Once authenticated, the device gets a unique WEP key for continued authenticated access.
-  \item{WPA Authentication:} Wi-Fi Protected Access has devices authenticate much like EAP, with some differences in key management.
+  \item{SSID Hiding:} Wireless networks can be "hidden" by not broadcasting the SSID; however,
+  it's extremely easy to detect hidden SSIDs. This is a "security through obscurity" technique,
+  which does a poor job of providing protection.
+  \item{Open WEP Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching
+  the access point's WEP keys. These keys must be pre-shared, and any authenticated device can
+  immediately authenticate with the access point. Use of WEP has been deprecated since 2004 and has
+  been shown to be insecure.
+  \item{Shared-Key WEP Authentication:} Similarly, devices have a shared key, but now must
+  authenticate in through a four-step handashake. The device sends a request to the access point,
+  who responds with an unencrypted challenge text, which the device encrypts using the shared key
+  and returns to the AP. Finally, the access point decrypts the device's response and returns it.
+  This technique is actually less secure than Open WEP Authentication, but intruders can see both
+  the clear and encrypted text, and therefore derive the shared key. Once derived, they could use
+  the shared key for uninhibited access to the wireless network.
+  \item{MAC Address Authentication:} An access point can be configured with a white-list of allowed
+  device MAC addresses. Any device with a MAC address on that list can communicate over the network.
+  Authentication by MAC address is problematice for a couple reasons. First, it is onerous on the
+  system administrator to have to manage the list of allowed MAC addresses, especially at scale.
+  Secondly, it is actually pretty easy to spoof MAC addresses. An intruder simply needs to eavesdrop
+  on a successful authentication, and then assume that device's MAC address.
+\end{description}
+
+\subsubsection{Secure Types}
+\begin{description}
+  \item{WPA Authentication:} WPA (Wi-Fi Protected Access) is a successor to WEP, addressing the
+  vulnerabilities of WEP that introduced insecurities. Specifically, it uses TKIP (Temporal Key
+  Integrity Protocol) to dynamically use a new key for each packet after initial authentication.
+  Additionally it replaces WEP's use of CRC (Cyclic Redundancy Check) with Michael for better packet
+  integrity verification. For all that, WPA suffers from two main vulnerabilities: (1) users can
+  choose to use insecure secrets, and (2) can be bypassed through Wi-Fi Protected Setup.
+
+  WPA comes in two primary types: WPA-Personal (or WPA-PSK, pre-shared key) and WPA-Enterprise. They
+  have different requirements and target audiences: \cite{wiki:WPA}
+  \begin{itemize}
+  \item{WPA-Personal:} Intended for residential and small office networks. All devices authenticate
+  with the same key. Also called "WPA-PSK".
+  \item{WPA-Enterprise:} Intended for enterprise networks, required a RADIUS authentication server.
+  It uses EAP for authentication. Also called "WPA-802.1X mode" or "WPA".
+  \end{itemize}
+
+  \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of
+  interactions between the device and a RADIUS server, with the access point relaying. Once
+  authenticated, the device gets a unique WEP key for continued authenticated access.
 \end{description}
 
 \subsection{Shared Keys}
