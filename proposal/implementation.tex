@@ -1,6 +1,28 @@
 \section{Implementation}
 \label{section:implementation}
-[implementation here]
+Given the scope of this project, I aimed to achieve a minimum viable prototype, leaving improvements
+to get it actually adopted for Future Work\ref{section:futurework}.
 
-\subsection{Some subsection}
-[subsection here]
+\subsection{Proof of Concept}
+Here I break down the work I did to create an initial proof of concept. Note that all captive portal
+communication would eventually be over SSL/TLS to ensure the credentials eventually passed to the
+user cannot be read by eavesdroppers.
+
+\subsubsection{Captive Portal}
+The first thing I need to do is implement a captive portal on an OpenWRT router, where I can
+redirect all users of the open SSID to an authentication page.
+
+
+\subsubsection{Router-Facebook Integration}
+The next thing I need to do is integrate the router with Facebook and authenticate it on behalf of
+the owner in order to get a list of their friends. Additionally I need to securely store the OAuth
+token allowing the router to authenticate for the owner to Facebook.
+
+\subsubsection{User-Facebook Authentication}
+The next step is to have users authenticate with Facebook so the captive portal server can learn
+their identity and see if they are one of the owner's friends. If they are found to be in that list,
+the server will present the user with the credentials to the secure SSID.
+
+\subsubsection{Programmatic SSID Re-keying}
+The final step in the proof of concept is to show that I can program the router to periodically
+change the access credentials for the encrypted SSID.
