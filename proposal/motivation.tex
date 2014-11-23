@@ -71,7 +71,11 @@ token with a user-entered PIN in a time-sensitive algorithm to frequently produc
 codes. Authentication with the server requires the device to be synchronized with its clock.
 \end{description}
 
-\subsection{Shared Keys and Users}
+\subsection{Authentication Summary}
+Two summarize the types of authentication, let's boil them down into their significance to each
+of our two target WLAN categories: Residential/Small and Enterprise Networks.
+
+\subsubsection{Residential and Small Networks}
 Most of the authentication types targeting residential and small office rely on a shared key.
 Regardless of the security of the authentication technique, they all suffer vulnerabilities from
 the human element. From one angle, users could mismanage or misplace secrets, exposing the
@@ -81,10 +85,41 @@ are able to study human patterns and behaviors in password use, rendering techin
 passwords insecure. However, if you use randomly generated passwords, the users will likely store
 them somewhere, exposing the system to attack.
 
-\subsection{RADIUS Authentication Servers}
+\subsubsection{Enterprise Networks}
 The authentication types targeting enterprise use typically rely on a RADIUS authentication server.
 RADIUS stands for ``Remote Authentication Dial In User Service,'' and provides AAA (Authentication,
 Authorization, and Accounting) \cite{wiki:RADIUS}. Authentication with a RADIUS server is usually
 with EAP or another authentication protocol. The user information can be stored locally in the
 RADIUS server or integrated with an external store, such as SQL, Kerberos, LDAP, or Active
 Directory.
+
+\subsection{OAuth}
+OAuth, or Open Authorization, is an open web standard for delegating access to a \texttt{third
+party} on behalf of a \texttt{resource owner} to a \texttt{resource provider}. It aims to make it
+easy for clients to share access to a single authentication provider without having to share
+sensitive credentials.
+
+\subsubsection{OAuth Parties}
+This open protocol benefits each party. Let's break down those benefits by the party.
+\begin{description}
+\item{Resource Owner (User):} The main benefits to the user are improved identity security because
+they don't have to manage yet another set of credentials, and reduced work as third parties can
+access existing data about the user, such as a list of friends.
+\item{Third Party (Startup):} The third party benefits in two main areas: (1) they have offloaded
+liability of storing and managing sensitive user credentials and data, and (2) they can reuse data
+already stored in the resource provider, such as a list of friends or the user's contact info.
+It's hard to implement a secure authentication service and keep it up to date. By letting the
+provider handle this and features like 2-factor authentication, the startup can focus on product
+development instead of authentication.
+\item{Resource Provider (Google/Facebook/etc):} The resource provider benefits from the increased
+use of their service.
+\end{description}
+
+\subsubsection{OAuth Access Control}
+The OAuth protocol allows the resource provider to control access levels (Read-only vs Read/Write)
+and access granularity (What data can the third party access: email? friends list?). Additionally,
+it improves the visibility the resource owner has into how their data will be used, improving trust
+in the system.
+
+In addition to defining access to the resource, OAuth also makes it simple to manage and revoke
+access. Users can see a list of authorized third parties and revoke access at any time.
