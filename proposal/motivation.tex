@@ -1,7 +1,7 @@
 \section{Motivation}
 \label{section:motivation}
 Existing WiFi authentication mechanisms, while technically secure, tend to create a poor user
-experience and become vulnerable because of unpredictable behaviors of the users. Additionally,
+experience and become vulnerable because of insecure behaviors of the users. Additionally,
 most methods of authentication make it difficult for an administrator to revoke access to the
 network, or even see who and what has access to begin with.
 
@@ -12,8 +12,8 @@ the following types of authentication, roughly in ascending order of security an
 
 \subsubsection{Insecure Types}
 \begin{description}
-\item{SSID Hiding:} Wireless networks can be "hidden" by not broadcasting the SSID; however,
-it's extremely easy to detect hidden SSIDs. This is a "security through obscurity" technique,
+\item{SSID Hiding:} Wireless networks can be ``hidden'' by not broadcasting the SSID; however,
+it's extremely easy to detect hidden SSIDs. This is a ``security through obscurity'' technique,
 which does a poor job of providing protection.
 \item{Open WEP Authentication:} Devices must have a Wired Equivalent Privacy (WEP) key matching
 the access point's WEP keys. These keys must be pre-shared, and any authenticated device can
@@ -47,13 +47,13 @@ WPA comes in two primary types: WPA-Personal (or WPA-PSK, pre-shared key) and WP
 have different requirements and target audiences: \cite{wiki:WPA}
 \begin{itemize}
 \item{WPA-Personal:} Intended for residential and small office networks. All devices authenticate
-with the same key. Also called "WPA-PSK".
+with the same key. Also called ``WPA-PSK.''
 \item{WPA-Enterprise:} Intended for enterprise networks, required a RADIUS authentication server.
-It uses EAP for authentication. Also called "WPA-802.1X mode" or "WPA".
+It uses EAP for authentication. Also called ``WPA-802.1X mode'' or ``WPA.''
 \end{itemize}
 
 \item{WPA2:} Replaces WPA with the major contribution being CCMP, a stronger AES-based encryption.
-CCMP stands for "Counter Cipher Mode with block chaining message authentication code Protocol."
+CCMP stands for ``Counter Cipher Mode with block chaining message authentication code Protocol.''
 
 \item{EAP Authentication:} The Extensible Authentication Protocol (EAP) defines a set of
 interactions between the device and a RADIUS authentication server, with the access point
@@ -73,11 +73,18 @@ codes. Authentication with the server requires the device to be synchronized wit
 
 \subsection{Shared Keys and Users}
 Most of the authentication types targeting residential and small office rely on a shared key.
-Regardless of the security of the authentication technique, they all suffer a vulnerability from
+Regardless of the security of the authentication technique, they all suffer vulnerabilities from
 the human element. From one angle, users could mismanage or misplace secrets, exposing the
 credentials to intruders. Another problem is using secure passwords that are still easy to
-remember. As hackers gain access to more and more leaked passwords, they are able to study human
-patterns and behaviors in password use, rendering techincally secure passwords insecure.
-\cite{wired:Passwords} A final issue with shared keys
+remember is difficult to achieve. As hackers gain access to more and more leaked passwords, they
+are able to study human patterns and behaviors in password use, rendering techincally secure
+passwords insecure. However, if you use randomly generated passwords, the users will likely store
+them somewhere, exposing the system to attack.
 
 \subsection{RADIUS Authentication Servers}
+The authentication types targeting enterprise use typically rely on a RADIUS authentication server.
+RADIUS stands for ``Remote Authentication Dial In User Service,'' and provides AAA (Authentication,
+Authorization, and Accounting) \cite{wiki:RADIUS}. Authentication with a RADIUS server is usually
+with EAP or another authentication protocol. The user information can be stored locally in the
+RADIUS server or integrated with an external store, such as SQL, Kerberos, LDAP, or Active
+Directory.

@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{section:introduction}
+In this paper I present the existing methods of authentication for Wireless networks (specifically
+WLANs). In general, they fall into two categories targeting (1) Residential and Small Office
+networks and (2) Enterprise networks. While each suffers for different reasons, I propose both would
+benefit from integration with OAuth providers such as Google, Facebook, Github, Twitter, or a
+private OAuth server. Offloading authentication to these providers contributes to both small and
+enterprise networks in different ways, while improving the user experience in both cases.
+
+\subsection{Residential and Small Networks}
+The first type of network suffers heavily from lack of understanding of wireless networks and
+``the human factor,'' which introduces vulnerabilities not inherent to the authentication protocol.
+In these networks, there are likely to be relatively few users, each with relatively many devices.
+Most of these devices will already be authenticated to social OAuth providers, which would allow
+for wireless network authentication software to prompt the user to simply reuse that authentication
+for access to the WLAN.
+
+These small networks are the primary target of this proposal, as they stand to gain the most through
+the ease of use introduced by socially-authenticated WLANs.
+
+\subsection{Enterprise Networks}
+The second type of network would benefit from integration with OAuth providers because it would
+offload maintenance of yet another server(s). Additionally, more and more enterprises are using
+OAuth for internal authentication, so this would allow them to reuse their main authentication
+mechanism \cite{todo:OAuthEnterprise}.
