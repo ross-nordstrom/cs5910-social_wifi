@@ -3,7 +3,7 @@
 Given the scope of this project, I aimed to achieve a minimum viable prototype, leaving improvements
 to get it actually adopted for Future Work\ref{section:futurework}.
 
-\subsection{Proof of Concept}
+\subsection{Proof of Concept Goals}
 Here I break down the work I did to create an initial proof of concept. Note that all captive portal
 communication would eventually be over SSL/TLS to ensure the credentials eventually passed to the
 user cannot be read by eavesdroppers.
@@ -11,7 +11,6 @@ user cannot be read by eavesdroppers.
 \subsubsection{Captive Portal}
 The first thing I need to do is implement a captive portal on an OpenWRT router, where I can
 redirect all users of the open SSID to an authentication page.
-
 
 \subsubsection{Router-Facebook Integration}
 The next thing I need to do is integrate the router with Facebook and authenticate it on behalf of
@@ -26,3 +25,12 @@ the server will present the user with the credentials to the secure SSID.
 \subsubsection{Programmatic SSID Re-keying}
 The final step in the proof of concept is to show that I can program the router to periodically
 change the access credentials for the encrypted SSID.
+
+\subsection{Proof of Concept Implementation}
+It turns out there's an open source tool for instrumenting an OpenWRT router with a captive portal
+and RADIUS. The product is CoovaAP \cite{product:CoovaAP}, and it can be deployed as a simple
+firmware upgrade to OpenWRT-enabled routers. Specifically I worked with a Linksys WRT54GL
+\cite{product:WRT54GL}.
+
+An interesting and extremely relevant feature of CoovaAP is support for ``Facebook HotSpot Captive
+Portal.''
