@@ -1,10 +1,32 @@
 \section{Appendix}
 \label{section:appendix}
 
-\subsection{CoovaAP Setup}
-The CoovaAP setup was fairly straight-forward. As mentioned in the proposal, I used a Linksys
-WRT54GL \cite{product:WRT54GL} with the corresponding CoovaAP binary, available on their public
-website \cite{product:CoovaAPBin}. After the firmware was installed (by using the router's
-existing Firmware Update page), I had access to CoovaAP. I found that the Coova software was very
-flaky, and I had to reset the router multiple times to get any content on the Admin pages, such as
-the ability to configure it, or to setup a Hotspot.
+\subsection{CoovaAP}
+The CoovaAP setup was fairly straight-forward, if flaky. As mentioned in the proposal, I used a
+Linksys WRT54GL \cite{product:WRT54GL} with the corresponding CoovaAP binary, available on their
+public website \cite{product:CoovaAPBin}. After the firmware was installed (by using the router's
+existing Firmware Update page), I had access to CoovaAP. I found that the Admin page allowing me to
+configure the AP was very flaky in Chrome (version TODO) and Firefox (version TODO), but consistent
+in Internet Explorer (version 11.0.9600).
+
+Having learned that the Facebook integration is old and no longer works
+\cite{article:CoovaFacebookNoMore}, I decided to continue with my original plan of implementing my
+own captive portal server.
+
+\subsubsection{Captive Portal Setup}
+I managed to find a good tutorial \cite{article:CoovaHotSpotSetup} on setting up a custom captive
+portal page and followed it for the following main steps:
+\begin{enumerate}
+\item{Clear RAM:}  To ensure a fresh configuration, SSH into the router with \texttt{ssh
+root@192.168.1.1} (password ``root''), then run \texttt{ mtd erase nvram \&\& reboot }.
+\item{Setup Hotspot:}  Back in the Admin page (browse to http://192.168.1.1 in IE), setup a
+\texttt{HotSpot Type = Internal Hotspot} with \texttt{Registration Mode = ToS Acceptance} and Save.
+\item{Fix Broken Portal:}  In the SSH session, open (with ViM for example)
+\texttt{/et c/chilli/www/tos.chi}, then change \textbf{line 37}:
+  \begin{enumerate}
+  \item{from:} \texttt{ if [ "\$tos" = "1" ]; then }
+  \item{to:} \texttt{ if [ "\$HS\_REG\_MODE" = "tos" ]; then}
+  \end{enumerate}
+\item{Confirm it worked:}  Now try to access the internet via the router (SSID: \texttt{Coova}), you
+should see the Terms of Service page with Accept and Decline buttons at the bottom.
+\end{enumerate}
