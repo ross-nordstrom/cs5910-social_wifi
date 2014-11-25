@@ -29,10 +29,6 @@ root@192.168.1.1} (password ``root''), then run \texttt{ mtd erase nvram \&\& re
   \end{enumerate}
 \item{Confirm it worked:}  Now try to access the internet via the router (SSID: \texttt{Coova}), you
 should see the Terms of Service page with Accept and Decline buttons at the bottom.
-\item{Explore:}  Next I tried to understand how the ToS page was served. Frighteningly, it seems to
-be a served up by a Bash script. I managed to find the code driving the Footer and modify it to
-include my name \ref{fig:footer}, by modifying a section of
-\texttt{/etc/chilli/www/config-local.sh}.
 
 \begin{figure}[ht!]
 \centering
@@ -40,5 +36,32 @@ include my name \ref{fig:footer}, by modifying a section of
 \caption{Modified the Captive Portal!}
 \label{fig:footer}
 \end{figure}
+
+\item{Explore:}  Next I tried to understand how the ToS page was served. Frighteningly, it seems to
+be a served up by a Bash script. I managed to find the code driving the Footer and modify it to
+include my name \ref{fig:footer}, by modifying a section of
+\texttt{/etc/chilli/www/config-local.sh}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{fig/allowed_domains1.png}
+\caption{Allow jQuery within the Walled Garden}
+\label{fig:allow_jquery}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{fig/jquery1.png}
+\caption{and then use jQuery}
+\label{fig:use_jquery}
+\end{figure}
+
+\item{Run jQuery:}  Knowing I could modify code, I next tried to run some custom JavaScript,
+anticipating that I could use a JavaScript library to implement an OAuth client. To do this, I added
+a \texttt{<script>} tag including \textunderscore{http\:\/\/code.jquery.com\/jquery-1.11.1.js}. This
+of course didn't work initially because of the captive portal. To fix this, I added
+``code.jquery.com'' to my allowed Domains in the Admin portal's Access List \ref{fig:allow_jquery}.
+I was successfully able to use jQuery within the page then to overwrite a DOM element after page
+load. The result is a console message and modified text \ref{fig:use_jquery}.
 
 \end{enumerate}
