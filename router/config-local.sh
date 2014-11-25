@@ -175,10 +175,11 @@ contactform() {
 termsform() {
     form "tos.chi" "$(uamfile terms_form 1)"
     echo "<div>
-    <h2>Loading Underscore [Ross 24-NOV-2014]</h2>
+    <h2>Loading jQuery [Ross 24-NOV-2014]</h2>
     <p id='ross1'>This should be overridden</p>"
     echo "<script type='text/javascript'>console.log('Hello world [Ross 24-NOV-2014]');</script>"
     echo "<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.1.js'></script>"
+    echo "<script type='text/javascript'>\$(function() { console.log('DOM Loaded [Ross 24-NOV-2014]'); \$('#ross1').text('Content set by JS'); }); // DOM load</script>"
     echo "</div>"
 
 }
