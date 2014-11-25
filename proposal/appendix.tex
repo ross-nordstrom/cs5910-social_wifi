@@ -65,4 +65,17 @@ I was successfully able to use jQuery within the page then to overwrite a DOM el
 load. The result is a console message and modified text \ref{fig:use_jquery}, having added some
 JavaScript to the served page \cite{github:jquery}.
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{fig/google_project.png}
+\caption{Google Project to authenticate against}
+\label{fig:google_project}
+\end{figure}
+
+\item{Demo OAuth with Google:}  Now that I know I can run arbitrary JavaScript, I wanted to try
+running the demonstration Google OAuth code \cite{google:OAuthDemo} from the router. To accomplish
+this, I created a Google project \ref{fig:google_project} and configured a Client ID with which to
+authenticate. An important step was to add ``localhost.ap.coova.org'' to the allowed referers and
+JavaScript Origins fields.
+
 \end{enumerate}
