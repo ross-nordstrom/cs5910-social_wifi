@@ -29,4 +29,16 @@ root@192.168.1.1} (password ``root''), then run \texttt{ mtd erase nvram \&\& re
   \end{enumerate}
 \item{Confirm it worked:}  Now try to access the internet via the router (SSID: \texttt{Coova}), you
 should see the Terms of Service page with Accept and Decline buttons at the bottom.
+\item{Explore:}  Next I tried to understand how the ToS page was served. Frighteningly, it seems to
+be a served up by a Bash script. I managed to find the code driving the Footer and modify it to
+include my name \ref{fig:footer}, by modifying a section of
+\texttt{/etc/chilli/www/config-local.sh}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=90mm]{fig/footer.png}
+\caption{Modified the Captive Portal!}
+\label{fig:footer}
+\end{figure}
+
 \end{enumerate}
