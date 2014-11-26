@@ -7,4 +7,4 @@
 > Abstract goes here
 
 ## Contents
-The major contribution of this repository is the `/proposal` folder, containing my project proposal and some LaTex scripting for generating it.
+The major contribution of this repository is the `/proposal` folder, containing my project proposal and some LaTex scripting for generating it. The source code I used and created is also available in the other folders.
