@@ -33,4 +33,11 @@ firmware upgrade to OpenWRT-enabled routers. Specifically I worked with a Linksy
 \cite{product:WRT54GL}.
 
 An interesting and extremely relevant feature of CoovaAP is support for ``Facebook HotSpot Captive
-Portal.''
+Portal.'' Unfortunately, it has not been maintained and has not worked in several years
+\cite{article:CoovaFacebookDead}. In lieu of this, I decided to try out integrating with Google+
+OAuth as a proof of concepts. Luckily, CoovaAp support programming a HotSpot server, so I tried
+instrumenting this. I was able to setup a Google Project with which to authenticate, but could not
+get the Hotspot server to integrate with it in the time I had. Details on the code I wrote and
+setup I did can be found in the appendix \ref{section:appendix}. Many of the challenges I faced
+had to do with the documentation for using CoovaAp. In many cases, the documentation was outdated,
+in other cases there simply wasn't the level of detail I could have used to improve my setup time.

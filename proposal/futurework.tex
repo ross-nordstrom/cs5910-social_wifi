@@ -1,6 +1,45 @@
 \section{Future Work}
 \label{section:futurework}
-[future work here]
+Future work on my idea will mainly take more time in order to complete a proof of concept
+demonstrating OAuth-based access to a wifi network. Since it's already been done with CoovaAp, the
+major focus should be on ease of use, supporting several providers, and marketing the idea rather
+than ability to do the authentication.
 
-\subsection{Subsection}
-[subsection here]
+\subsection{Ease of Use}
+Just as the original goal of my research was to improve security of WiFi networks by making it easy
+for non-tech-savvy users to maintain secure networks, future work should respect this primary goal.
+Ease of use of the system falls into two categories: (1) ease of setting up and maintaining the
+networks, and (2) ease of authenticating to the network with a minimum of work
+
+With the prevalence social authentication on users' devices, it should be feasible to reuse existing
+authenticated sessions with identity providers (Facebook, Google, Twitter, etc...) so that users can
+authenticate to the wireless network with minimal user input. It should be easy to streamline the
+ease of use since Wireless Network authentication uses a browser page, which should automatically
+reuse the device's authentication session, since that's core to the design of OAuth.
+
+A more problematic space will be authenticating devices to the network. Luckily, Google has some
+good documentation on how to handle device authentication with their implementation of OAuth 2
+\cite{google:OAuthDevices}. However, research will have to be done on how to make it easy to
+replicate device authentication with other services, like Facebook and Twitter.
+
+\subsection{Support Major Providers}
+Another challenge to deal with in future work is ensuring the system can integrate with most
+providers users might want to work with. On paper, OAuth2 claims to standardize authentication
+workflows regardless of provider; however, in practice each provider's integration looks a little
+different. Future work will need to identify the most important authentication providers and ensure
+support for each of those. One additional requirement should include making the system easily
+extensible so enterprises could integrate with their own proprietary OAuth system.
+
+Currently, the top candidates to target would be Facebook, Google+, Twitter, and Github. Twitter
+and Github have the least-obvious architectures to enforce authorization of ``who can access my
+wireless network,'' unlike Facebook and Google+ which support user-managed ``groups'' of friends.
+
+\subsection{Marketing}
+Finally, no system is of any use if it's unknown to the audience that might use it. Most of the
+marketing work to ensure a system like this gains popularity will be from partnership with one or
+more of the major router manufacturers like Linksys, D-Link, and Cisco. Additionally, the system
+will be best-served by being made available as an Open Source project so that developers can
+easily collaborate to extend the OAuth providers it integrates with, and ensure the system is
+secure. As we know from the historical implementations of security systems, the best way to ensure
+their success is by making them public so that as many people as possible can try to find holes in
+the system.
