@@ -3,7 +3,6 @@
 *.blg
 *.aux
 *.log
-*.pdf
 *.out
 build
 
